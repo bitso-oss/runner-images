@@ -60,6 +60,7 @@ variable "image_os" {
 data "amazon-ami" "macos-base-image" {
   filters = {
     name                = "${var.source_ami_name}"
+    architecture        = "arm64_mac"
     virtualization-type = "hvm"
   }
   most_recent = true
