@@ -47,16 +47,16 @@ codeql_tag_names=("${codeql_tag_name}" "${prior_codeql_tag_name}")
 for index in "${!codeql_bundle_versions[@]}"; do
   bundle_version="${codeql_bundle_versions[$index]}"
   bundle_tag_name="${codeql_tag_names[$index]}"
-  
+
   echo "Downloading CodeQL bundle $bundle_version..."
     download_with_retries "https://github.com/github/codeql-action/releases/download/$bundle_tag_name/codeql-bundle.tar.gz" "/tmp" "codeql-bundle.tar.gz"
     codeql_archive="/tmp/codeql-bundle.tar.gz"
 
     codeql_toolcache_path="$AGENT_TOOLSDIRECTORY/CodeQL/$bundle_version/x64"
-    mkdir -p "$codeql_toolcache_path"
+    sudo mkdir -p "$codeql_toolcache_path"
 
     echo "Unpacking the downloaded CodeQL bundle archive..."
-    tar -xzf "$codeql_archive" -C "$codeql_toolcache_path"
+    sudo tar -xzf "$codeql_archive" -C "$codeql_toolcache_path"
 
     # We only pin the latest version in the toolcache, to support overriding the CodeQL version specified in defaults.json on GitHub Enterprise.
     if [[ "$bundle_version" == "$codeql_bundle_version" ]]; then
@@ -64,7 +64,7 @@ for index in "${!codeql_bundle_versions[@]}"; do
     fi
 
     # Touch a file to indicate to the toolcache that setting up CodeQL is complete.
-    touch "$codeql_toolcache_path.complete"
+    sudo touch "$codeql_toolcache_path.complete"
 done
 
 invoke_tests "Common" "CodeQLBundles"

@@ -15,6 +15,14 @@ variable "instance_type" {
   type = string
 }
 
+variable "license_configuration_arn" {
+  type = string
+}
+
+variable "host_resource_group_arn" {
+  type = string
+}
+
 variable "build_id" {
   type = string
 }
@@ -85,7 +93,13 @@ source "amazon-ebs" "template" {
     volume_size           = 380
     volume_type           = "gp3"
   }
+  license_specifications {
+    license_configuration_request {
+      license_configuration_arn = "${var.license_configuration_arn}"
+    }
+  }
   placement {
+    host_resource_group_arn = "${var.host_resource_group_arn}"
     tenancy = "host"
   }
   source_ami           = "${data.amazon-ami.macos-base-image.id}"
