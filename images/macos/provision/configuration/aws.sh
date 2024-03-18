@@ -1,5 +1,10 @@
 #!/bin/bash -e -o pipefail
 
+echo "Making sure OpenSSL is correctly installed..."
+brew_smart_install "ca-certificates"
+brew_smart_install "openssl@1.1"
+brew link openssl@1.1 --force
+
 echo "Setting user password..."
 echo "$PASSWORD" | sudo -S sh -c "dscl . -passwd /Users/$USERNAME $PASSWORD"
 
