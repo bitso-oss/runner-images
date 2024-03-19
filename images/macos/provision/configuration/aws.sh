@@ -19,6 +19,7 @@ ln -s /Users/$USERNAME/.bashrc /Users/runner/.bashrc
 
 mkdir /Users/$USERNAME/hostedtoolcache
 chown $USERNAME:staff /Users/$USERNAME/hostedtoolcache
+chmod -R 775 /Users/$USERNAME/hostedtoolcache
 ln -s /Users/$USERNAME/hostedtoolcache /Users/runner/hostedtoolcache
 
 echo "Activating Remote Desktop..."
