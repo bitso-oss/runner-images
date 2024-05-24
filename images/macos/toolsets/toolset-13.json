@@ -1,6 +1,6 @@
 {
     "xcode": {
-        "default": "15.3.0",
+        "default": "15.4",
         "x64": {
             "versions": [
                 { "link": "15.4", "version": "15.4.0+15F31d"},
