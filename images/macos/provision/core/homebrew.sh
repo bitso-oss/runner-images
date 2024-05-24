@@ -37,3 +37,9 @@ brew_smart_install "wget"
 
 # init brew bundle feature
 brew tap Homebrew/bundle
+
+echo "Making sure OpenSSL is correctly installed..."
+#brew link --overwrite openssl@1.1
+brew_smart_install "ca-certificates"
+brew_smart_install "openssl@1.1"
+

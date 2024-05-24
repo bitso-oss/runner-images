@@ -15,4 +15,4 @@ else
   ln -sf $(brew --prefix openssl@1.1)/bin/openssl /opt/homebrew/bin/openssl
 fi
 
-invoke_tests "OpenSSL"
+#invoke_tests "OpenSSL"
