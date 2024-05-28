@@ -1,20 +1,22 @@
 {
     "xcode": {
-        "default": "14.3.1",
+        "default": "15.4",
         "x64": {
             "versions": [
-                { "link": "15.0", "version": "15.0.0+15A240d"},
-                { "link": "14.3.1", "version": "14.3.1+14E300c","symlinks": ["14.3"] },
-                { "link": "14.2", "version": "14.2.0+14C18" },
-                { "link": "14.1", "version": "14.1.0+14B47b" }
+                { "link": "15.4", "version": "15.4.0+15F31d"},
+                { "link": "15.3", "version": "15.3.0+15E204a"},
+                { "link": "15.2", "version": "15.2.0+15C500b"},
+                { "link": "15.1", "version": "15.1.0+15C65"},
+                { "link": "15.0", "version": "15.0.1+15A507"}
             ]
         },
         "arm64":{
             "versions": [
-                { "link": "15.0", "version": "15.0.0+15A240d"},
-                { "link": "14.3.1", "version": "14.3.1+14E300c","symlinks": ["14.3"] },
-                { "link": "14.2", "version": "14.2.0+14C18" },
-                { "link": "14.1", "version": "14.1.0+14B47b" }
+                { "link": "15.4", "version": "15.4.0+15F31d"},
+                { "link": "15.3", "version": "15.3.0+15E204a"},
+                { "link": "15.2", "version": "15.2.0+15C500b"},
+                { "link": "15.1", "version": "15.1.0+15C65"},
+                { "link": "15.0", "version": "15.0.1+15A507"}
             ]
         }
     },

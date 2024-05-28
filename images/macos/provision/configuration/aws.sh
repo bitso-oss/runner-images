@@ -1,10 +1,5 @@
 #!/bin/bash -e -o pipefail
 
-echo "Making sure OpenSSL is correctly installed..."
-brew link --overwrite openssl@1.1
-brew_smart_install "ca-certificates"
-brew_smart_install "openssl@1.1"
-
 echo "Setting user password..."
 echo "$PASSWORD" | sudo -S sh -c "dscl . -passwd /Users/$USERNAME $PASSWORD"
 
@@ -24,6 +19,3 @@ ln -s /Users/$USERNAME/hostedtoolcache /Users/runner/hostedtoolcache
 
 echo "Activating Remote Desktop..."
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -privs -all
-
-# tmp until SoftwareReport.Generator.ps1 is fixed
-mkdir image-generation/output

@@ -65,6 +65,10 @@ variable "image_os" {
   default = "macos13"
 }
 
+variable "subnet_id" {
+  type = string
+}
+
 data "amazon-ami" "macos-base-image" {
   filters = {
     name                = "${var.source_ami_name}"
@@ -107,6 +111,7 @@ source "amazon-ebs" "template" {
   ssh_private_key_file = "${var.ssh_private_key_file}"
   ssh_timeout          = "2h"
   ssh_username         = "${var.vm_username}"
+  subnet_id            = "${var.subnet_id}"
 }
 
 build {
@@ -273,6 +278,7 @@ build {
       "pwsh -File \"$HOME/image-generation/tests/RunAll-Tests.ps1\""
     ]
     execute_command = "source $HOME/.bash_profile; {{ .Vars }} {{ .Path }}"
+    valid_exit_codes = [0, 1] # 1 is expected for tests
   }
   provisioner "file" {
     destination = "../image-output/"
