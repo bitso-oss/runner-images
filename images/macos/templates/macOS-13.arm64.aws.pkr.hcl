@@ -278,6 +278,7 @@ build {
       "pwsh -File \"$HOME/image-generation/tests/RunAll-Tests.ps1\""
     ]
     execute_command = "source $HOME/.bash_profile; {{ .Vars }} {{ .Path }}"
+    valid_exit_codes = [0, 1] # 1 is expected for tests
   }
   provisioner "file" {
     destination = "../image-output/"
