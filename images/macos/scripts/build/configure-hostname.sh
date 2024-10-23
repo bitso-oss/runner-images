@@ -5,7 +5,7 @@
 ##         Hostname and Computername should contain .local in name to avoid name resolution issues
 ################################################################################
 
-tee -a /usr/local/bin/change_hostname.sh > /dev/null <<\EOF
+sudo tee -a /usr/local/bin/change_hostname.sh > /dev/null <<\EOF
 #!/bin/bash -e -o pipefail
 
 name="Mac-$(python3 -c 'from time import time; print(int(round(time() * 1000)))')"
@@ -14,7 +14,7 @@ scutil --set LocalHostName $name
 scutil --set ComputerName "${name}.local"
 EOF
 
-chmod +x /usr/local/bin/change_hostname.sh
+sudo chmod +x /usr/local/bin/change_hostname.sh
 
 sudo tee -a /Library/LaunchDaemons/change_hostname.plist > /dev/null <<\EOF
 <?xml version="1.0" encoding="UTF-8"?>

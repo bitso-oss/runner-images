@@ -28,7 +28,7 @@ function Invoke-DownloadXcodeArchive {
 
     Write-Host "Downloading Xcode $Version"
     $tempXipDirectory = New-Item -Path $DownloadDirectory -Name "Xcode$Version" -ItemType "Directory"
-    $xcodeFileName = 'Xcode-{0}.xip' -f $Version
+    $xcodeFileName = [System.Web.HttpUtility]::UrlEncode('Xcode-{0}.xip' -f $Version)
     $xcodeUri = '{0}{1}?{2}'-f ${env:XCODE_INSTALL_STORAGE_URL}, $xcodeFileName, ${env:XCODE_INSTALL_SAS}
     $xcodeFullPath = Join-Path $tempXipDirectory.FullName $xcodeFileName
     Invoke-DownloadWithRetry -Url $xcodeUri -Path $xcodeFullPath | Out-Null
@@ -139,7 +139,7 @@ function Approve-XcodeLicense {
     $xcodeBuildPath = Get-XcodeToolPath -XcodeRootPath $XcodeRootPath -ToolName "xcodebuild"
 
     if ($os.IsVentura -or $os.IsSonoma) {
-        Invoke-ValidateCommand -Command "sudo $xcodeBuildPath -license accept" -Timeout 15
+        Invoke-ValidateCommand -Command "sudo $xcodeBuildPath -license accept"
     } else {
         Invoke-ValidateCommand -Command "sudo $xcodeBuildPath -license accept"
     }
