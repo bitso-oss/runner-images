@@ -32,7 +32,7 @@ chromedriver_bin="$chromedriver_dir/chromedriver"
 chromedriver_archive_path=$(download_with_retry $chromedriver_url)
 unzip -qq $chromedriver_archive_path -d /tmp/
 sudo mv /tmp/chromedriver-$chrome_platform $chromedriver_dir
-ln -s $chromedriver_bin /usr/local/bin/chromedriver
+sudo ln -s $chromedriver_bin /usr/local/bin/chromedriver
 echo "export CHROMEWEBDRIVER=$chromedriver_dir" >> ${HOME}/.bashrc
 
 # Download and unpack the latest release of Google Chrome for Testing

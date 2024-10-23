@@ -16,8 +16,8 @@ fi
 archive_path=$(download_with_retry ${url})
 unzip -qq $archive_path -d /tmp/azcopy
 extract_path=$(echo /tmp/azcopy/azcopy*)
-cp $extract_path/azcopy /usr/local/bin/azcopy
-chmod +x /usr/local/bin/azcopy
+sudo cp $extract_path/azcopy /usr/local/bin/azcopy
+sudo chmod +x /usr/local/bin/azcopy
 
 
 invoke_tests "Common" "AzCopy"
