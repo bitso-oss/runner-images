@@ -8,36 +8,22 @@ source ~/utils/utils.sh
 
 echo "Installing Python Tooling"
 
-if is_Monterey; then
-    echo "Install latest Python 2"
-    python2_pkg=$(download_with_retry "https://www.python.org/ftp/python/2.7.18/python-2.7.18-macosx10.9.pkg")
-    python2_pkg_sha256="c570f38b05dd8b112ad21b418cdf51a9816d62f9f44746452739d421be24d50c"
-    use_checksum_comparison $python2_pkg $python2_pkg_sha256
-
-    choice_changes_xml=$(mktemp /tmp/python2_choice_changes.xml.XXXXXX)
-    sudo installer -showChoiceChangesXML -pkg $python2_pkg -target / | tee $choice_changes_xml > /dev/null
-
-    # To avoid symlink conflicts, remove tools installation in /usr/local/bin using installer choices
-    xmllint --shell $choice_changes_xml <<EOF
-    cd //array/dict[string[text()='org.python.Python.PythonUnixTools-2.7']]/integer
-    set 0
-    save
-EOF
-
-    sudo installer -applyChoiceChangesXML $choice_changes_xml -pkg $python2_pkg -target /
-
-    pip install --upgrade pip
-
-    echo "Install Python2 certificates"
-    bash -c "/Applications/Python\ 2.7/Install\ Certificates.command"
-fi
-
 # Close Finder window
 close_finder_window
 
-echo "Brew Installing Python 3"
-brew_smart_install "python@3.12"
+# Installing latest Homebrew Python 3 to handle python3 and pip3 symlinks
+# When latest Python3 is installed as a dependency for other packages
+# it does not create /usr/local/bin/python3 and /usr/local/bin/pip3
+echo "Brew Installing default Python 3"
+brew_smart_install "python"
 
+# Install specific Python version
+# Update symlinks for python3 and pip3 to point to the specific version
+toolsetVersion=$(get_toolset_value '.python.default')
+echo "Installing Python $toolsetVersion"
+brew_smart_install "python@$toolsetVersion"
+
+# Pipx has its own Python dependency
 echo "Installing pipx"
 
 if is_Arm64; then

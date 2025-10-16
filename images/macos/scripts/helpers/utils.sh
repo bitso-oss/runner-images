@@ -45,6 +45,10 @@ is_Arm64() {
     [ "$(arch)" = "arm64" ]
 }
 
+is_Tahoe() {
+    [ "$OSTYPE" = "darwin25" ]
+}
+
 is_Sequoia() {
     [ "$OSTYPE" = "darwin24" ]
 }
@@ -79,10 +83,6 @@ is_VenturaArm64() {
 
 is_VenturaX64() {
     is_Ventura && ! is_Arm64
-}
-
-is_Monterey() {
-    [ "$OSTYPE" = "darwin21" ]
 }
 
 get_toolset_value() {

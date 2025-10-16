@@ -195,6 +195,13 @@ function Build-XcodeSymlinks {
     $sourcePath = Get-XcodeRootPath -Version $Version
     $Symlinks | Where-Object { $_ } | ForEach-Object {
         $targetPath = Get-XcodeRootPath -Version $_
+        
+        # Skip creating symlink if source and target are the same (self-referencing)
+        if ($sourcePath -eq $targetPath) {
+            Write-Host "Skipping self-referencing symlink: '$targetPath' -> '$sourcePath'"
+            return
+        }
+
         Write-Host "Creating symlink: '$targetPath' -> '$sourcePath'"
         New-Item -Path $targetPath -ItemType SymbolicLink -Value $sourcePath | Out-Null
     }
