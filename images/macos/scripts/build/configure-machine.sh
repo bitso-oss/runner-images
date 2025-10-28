@@ -90,6 +90,12 @@ if [[ ! "$(automationmodetool)" =~ "DOES NOT REQUIRE" ]]; then
     exit 1
 fi
 
+# Fix sudoers file permissions
+sudo chmod 440 /etc/sudoers.d/*
+
+# Add NOPASSWD for the current user to sudoers
+sudo sed -i '' 's/%admin		ALL = (ALL) ALL/%admin		ALL = (ALL) NOPASSWD: ALL/g' /etc/sudoers
+
 # Create symlink for tests running
 if [[ ! -d "/usr/local/bin" ]];then
     sudo mkdir -p -m 775 /usr/local/bin
@@ -97,3 +103,12 @@ if [[ ! -d "/usr/local/bin" ]];then
 fi
 chmod +x $HOME/utils/invoke-tests.sh
 sudo ln -s $HOME/utils/invoke-tests.sh /usr/local/bin/invoke_tests
+
+# Fix share dir permissions
+if [[ ! -d "/usr/local/share" ]]; then
+    sudo mkdir -p -m 775 /usr/local/share
+    sudo chown "$USER":admin /usr/local/share
+else
+    sudo chown "$USER":admin /usr/local/share
+    sudo chmod 775 /usr/local/share
+fi

@@ -41,7 +41,7 @@ Describe "Selenium server" {
     }
 }
 
-Describe "Edge" -Skip:($os.IsVenturaArm64 -or $os.IsSonomaArm64 -or $os.IsSequoiaArm64) {
+Describe "Edge" {
     It "Microsoft Edge" {
         $edgeLocation = "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
         $edgeLocation | Should -Exist
@@ -53,7 +53,7 @@ Describe "Edge" -Skip:($os.IsVenturaArm64 -or $os.IsSonomaArm64 -or $os.IsSequoi
     }
 }
 
-Describe "Firefox" -Skip:($os.IsVenturaArm64 -or $os.IsSonomaArm64 -or $os.IsSequoiaArm64) {
+Describe "Firefox" {
     It "Firefox" {
         $firefoxLocation = "/Applications/Firefox.app/Contents/MacOS/firefox"
         $firefoxLocation | Should -Exist
