@@ -251,14 +251,15 @@ build {
       "${path.root}/../scripts/build/install-rubygems.sh",
       "${path.root}/../scripts/build/install-git.sh",
       "${path.root}/../scripts/build/install-node.sh",
-      "${path.root}/../scripts/build/install-common-utils.sh"
+      "${path.root}/../scripts/build/install-common-utils.sh",
+      "${path.root}/../scripts/build/configure-hostedtoolcache-folder.sh"
     ]
   }
 
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG END OF install-common-utils.sh '",
+      "echo 'LOG END OF install-common-utils.sh '",
       "echo '=========================================='",
     ]
   }
@@ -274,7 +275,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG END OF Install-Xcode.ps1 '",
+      "echo 'LOG END OF Install-Xcode.ps1 '",
       "echo '=========================================='",
     ]
   }
@@ -292,7 +293,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG START install-actions-cache.sh '",
+      "echo 'LOG START install-actions-cache.sh '",
       "echo '=========================================='",
     ]
   }
@@ -324,7 +325,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG START Install-Toolset.ps1 '",
+      "echo 'LOG START Install-Toolset.ps1 '",
       "echo '=========================================='",
     ]
   }
@@ -344,7 +345,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG START Configure-Xcode-Simulators.ps1 '",
+      "echo 'LOG START Configure-Xcode-Simulators.ps1 '",
       "echo '=========================================='",
     ]
   }
@@ -362,7 +363,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG START Generate-SoftwareReport.ps1 '",
+      "echo 'LOG START Generate-SoftwareReport.ps1 '",
       "echo '=========================================='",
     ]
   }
@@ -383,7 +384,7 @@ build {
   provisioner "shell" {
     inline = [
       "echo '=========================================='",
-      "echo 'DEBUG START move output to image-output '",
+      "echo 'LOG START move output to image-output '",
       "echo '=========================================='",
     ]
   }

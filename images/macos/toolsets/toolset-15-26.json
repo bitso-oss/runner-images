@@ -5,7 +5,8 @@
             "versions": [
                 { "link": "26.0.1", "version": "26.0.1+17A400", "symlinks": ["26"], "install_runtimes": "true", "sha256": "9881c457068c86ac91e94cca2d7116dfd01cb7179c22b0863b63c7f3bb7e7695"},
                 { "link": "16.4", "version": "16.4.0+16F6", "symlinks": ["16"], "install_runtimes": "true", "sha256": "2dbf65ba28fb85b34e72c14c529a42d5c3189ab0f11fb29fdebd5f4ee6c87900"},
-                { "link": "16.3", "version": "16.3.0+16E140", "symlinks": [], "install_runtimes": "true", "sha256": "c593177b73e45f31e1cf7ced131760d8aa8e1532f5bbf8ba11a4ded01da14fbb"}
+                { "link": "16.3", "version": "16.3.0+16E140", "symlinks": ["16.3"], "install_runtimes": "true", "sha256": "c593177b73e45f31e1cf7ced131760d8aa8e1532f5bbf8ba11a4ded01da14fbb"},
+                { "link": "16.1", "version": "16.1.0+16B40", "symlinks": ["16.1"], "install_runtimes": "true", "sha256": "8ca961d55981f983d21b99a95a6b0ac04905b837f6e11346ee86d28f12afe720"}
             ]
         }
     },    

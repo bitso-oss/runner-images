@@ -5,15 +5,15 @@
 ##
 ################################################################################
 
-echo "Setting user password..."
+echo "Setting user password... $USERNAME"
 echo "$PASSWORD" | sudo -S sh -c "dscl . -passwd /Users/$USERNAME $PASSWORD"
 
-echo "Creating runner user..."
+echo "Creating runner user... $USERNAME"
 sudo sysadminctl -addUser runner -shell /bin/bash -password $PASSWORD -home /Users/runner -admin
 sudo createhomedir -c -u runner
 sudo sh -c "echo 'runner ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/runner"
 
-echo "Configuring runner user..."
+echo "Configuring runner user... $USERNAME"
 cp /Users/$USERNAME/.bash_profile /Users/runner/.bash_profile
 ln -sf /Users/$USERNAME/.bashrc /Users/runner/.bashrc
 
